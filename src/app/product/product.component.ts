@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from './product.service';
+import { CartService } from '../cart/cart.service';
 
 @Component({
   selector: 'app-product',
@@ -8,9 +9,9 @@ import { ProductService } from './product.service';
   providers: [ProductService]
 })
 export class ProductComponent implements OnInit {
-  public cartCount: number;
+  cartCount
   searchProduct: string
-
+  constructor() { }
   ngOnInit() {
   }
 

@@ -13,20 +13,17 @@ export class ProductListComponent implements OnInit {
   cartItem = []
   cartCount: number = 0
   @Input() searchProduct
-  @Output() public cartCountEvent = new EventEmitter<number>();
-
+  @Output() cartCountEvent = new EventEmitter()
   constructor(private productService: ProductService, private cartService: CartService) {
   }
   ngOnInit() {
     this.products = this.productService.getProducts()
   }
 
-  addCartCount(item) {
+  addToCart(item) {
     this.cartService.addToCart(item);
     this.cartCount = this.cartService.getCartCount()
     this.cartCountEvent.emit(this.cartCount)
-
-
 
   }
 

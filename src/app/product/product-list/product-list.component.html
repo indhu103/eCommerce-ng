@@ -20,7 +20,7 @@
             <td>{{item.rating}}</td>
             <td>
                 <i *ngIf='item.quantity>0;else elseBlock' class="fa fa-cart-plus"
-                    style="font-size:48px;color:rgb(0, 162, 255)" (click)=" addCartCount(item)"></i>
+                    style="font-size:48px;color:rgb(0, 162, 255)" (click)=" addToCart(item)"></i>
             </td>
             <ng-template #elseBlock>
                 <td>

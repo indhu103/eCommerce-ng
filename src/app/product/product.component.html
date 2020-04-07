@@ -14,9 +14,10 @@
         <nav class="navbar bg-white ">
             <a class="navbar-brand text-dark font-weight-bold">Product List</a>
             <div class="ml-auto font-weight-bold">
-                <a routerLink='/cart' routerLinkActive="active">Your cart:<span>{{cartCount}}</span></a>
+                <a routerLink='/cart' routerLinkActive="active">Your
+                    cart:<span>{{cartCount}}</span></a>
             </div>
         </nav>
-        <app-product-list [searchProduct]="searchProduct" (cartCountEvent)="cartCount=$event"></app-product-list>
+        <app-product-list [searchProduct]=" searchProduct" (cartCountEvent)="cartCount=$event"></app-product-list>
     </div>
 </div>

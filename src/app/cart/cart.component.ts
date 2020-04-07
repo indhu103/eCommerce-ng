@@ -12,28 +12,21 @@ export class CartComponent implements OnInit {
   cartItems;
   details = false;
   userModel = new User('John Doe', 'xxx street', 'Coimbatore', 'TN', '123456', 9576757875)
-
+  cartCount: number
   constructor(private cartService: CartService, private router: Router) { }
 
   ngOnInit(): void {
     this.cartItems = this.cartService.getItems();
+    this.cartCount = this.cartService.getCartCount()
+
   }
 
   removeItem(item) {
-    if (item.quantity == 1) {
-      var index = this.cartItems.indexOf(item)
-      if (index !== -1) this.cartItems.splice(index, 1);
-    }
-    else {
-      this.updateQuantity(item)
-    }
+    this.cartService.removeItem(item);
+    this.cartCount = this.cartService.getCartCount()
+
   }
-  updateQuantity(item) {
-    var price = item.price / item.quantity
-    console.log(price)
-    item.quantity = item.quantity - 1
-    item.price = price * item.quantity
-  }
+
   placeOrder() {
     this.details = !this.details
 

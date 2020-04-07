@@ -3,7 +3,7 @@
         <nav class="navbar  bg-white ">
             <a class="navbar-brand text-dark font-weight-bold">Shopping Cart</a>
             <div class="ml-auto font-weight-bold">
-                <a>Your cart:<span>{{cartItems.length}}</span></a>
+                <a>Your cart:<span>{{cartCount}}</span></a>
             </div>
         </nav>
         <table class="table table-hover mt-5" *ngIf='cartItems.length!=0;else elseBlock'>
@@ -36,7 +36,7 @@
 
     </div>
 </div>
-<div class=" container mx-auto w-50 shadow p-4 mb-4 bg-light border border-light rounded-lg ">
+<div *ngIf="details" class=" container mx-auto w-50 shadow p-4 mb-4 bg-light border border-light rounded-lg ">
     <h3>Fill Your Shipping Details</h3>
     <div class='shadow p-4 mb-4 bg-light border border-light rounded-lg'>
         <form #userForm="ngForm" (ngSubmit)="onSubmit()" novalidate>

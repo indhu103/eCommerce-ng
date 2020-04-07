@@ -43,11 +43,32 @@ export class CartService {
             count = count + this.cartItems[i].quantity
         }
         return count
+    }
+    removeItem(item) {
+        if (item.quantity == 1) {
+            var index = this.cartItems.indexOf(item)
+            if (index !== -1) this.cartItems.splice(index, 1);
+        }
+        else {
+            this.updateQuantity(item)
+        }
+        // this.cartCount = this.cartCount - 1
+    }
 
+    updateQuantity(item) {
+        var price = item.price / item.quantity
+        item.quantity = item.quantity - 1
+        item.price = price * item.quantity
     }
     getUserDetails(user) {
-
         this.userDetails = user
+    }
+    getTotalPrice() {
+        var totalPrice = 0
+        for (var i = 0; i < this.cartItems.length; i++) {
+            totalPrice = totalPrice + this.cartItems[i].price
+        }
+        return totalPrice
     }
     getDetails() {
         return this.userDetails
