@@ -1,0 +1,32 @@
+<table class="table table-responsive-lg table-hover  ">
+    <tbody>
+        <tr class="bg-light">
+            <th>PRODUCT ID</th>
+            <th>PRODUCT NAME</th>
+            <th>DESCRIPTION</th>
+            <th>QUANTITY</th>
+            <th>PRICE</th>
+            <th>RATING</th>
+            <th></th>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr *ngFor="let item of products | filter:searchProduct">
+            <td>{{item.id}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.description}}</td>
+            <td>{{item.quantity}}</td>
+            <td>{{item.price | currency:'INR'}}</td>
+            <td>{{item.rating}}</td>
+            <td>
+                <i *ngIf='item.quantity>0;else elseBlock' class="fa fa-cart-plus"
+                    style="font-size:48px;color:rgb(0, 162, 255)" (click)=" addCartCount(item)"></i>
+            </td>
+            <ng-template #elseBlock>
+                <td>
+                    <i class="fa fa-cart-plus" style="font-size:48px;color:red"></i>
+                </td>
+            </ng-template>
+        </tr>
+    </tbody>
+</table>

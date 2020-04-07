@@ -1,0 +1,81 @@
+<div class="row">
+    <div class="col mr-5 ml-5 mt-5 shadow p-4 mb-4 bg-light border border-light rounded-lg">
+        <nav class="navbar  bg-white ">
+            <a class="navbar-brand text-dark font-weight-bold">Shopping Cart</a>
+            <div class="ml-auto font-weight-bold">
+                <a>Your cart:<span>{{cartItems.length}}</span></a>
+            </div>
+        </nav>
+        <table class="table table-hover mt-5" *ngIf='cartItems.length!=0;else elseBlock'>
+            <tbody>
+                <tr class="bg-light">
+                    <th>PRODUCT ID</th>
+                    <th>PRODUCT NAME</th>
+                    <th>DESCRIPTION</th>
+                    <th>QUANTITY</th>
+                    <th>PRICE</th>
+                    <th></th>
+                </tr>
+            </tbody>
+            <tbody>
+                <tr *ngFor="let cartItem of cartItems ">
+                    <td>{{cartItem.id}}</td>
+                    <td>{{cartItem.name}}</td>
+                    <td>{{cartItem.description}}</td>
+                    <td>{{cartItem.quantity}}</td>
+                    <td>{{cartItem.price | currency:'INR'}}</td>
+                    <td><button class="btn btn-danger" (click)="removeItem(cartItem)">Remove</button></td>
+                </tr>
+            </tbody>
+        </table>
+        <button *ngIf='cartItems.length!=0' class="btn btn-success float-right" (click)="placeOrder()">Place
+            Order</button>
+        <ng-template #elseBlock>
+            <h4 class='col  mt-5'>You Cart Is Empty..</h4>
+        </ng-template>
+
+    </div>
+</div>
+<div class=" container mx-auto w-50 shadow p-4 mb-4 bg-light border border-light rounded-lg ">
+    <h3>Fill Your Shipping Details</h3>
+    <div class='shadow p-4 mb-4 bg-light border border-light rounded-lg'>
+        <form #userForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
+            <div class='from-group'>
+                <label>Name</label>
+                <input type='text' required #name="ngModel" [class.is-invalid]="name.invalid && name.touched"
+                    class="form-control" name='name' [(ngModel)]='userModel.name'>
+            </div>
+            <div ngModelGroup="address">
+                <div class="from-group">
+                    <label>Street</label>
+                    <input type="text" required #street="ngModel" [class.is-invalid]="street.invalid && street.touched"
+                        class="form-control" name="street" [(ngModel)]='userModel.street'>
+                </div>
+                <div class="from-group">
+                    <label>City</label>
+                    <input type="text" required #city="ngModel" [class.is-invalid]="city.invalid && city.touched"
+                        class="form-control" name="city" [(ngModel)]='userModel.city'>
+                </div>
+                <div class="from-group">
+                    <label>State</label>
+                    <input type="text" required #state="ngModel" [class.is-invalid]="state.invalid && state.touched"
+                        class="form-control" name="state" [(ngModel)]='userModel.state'>
+                </div>
+                <div class="from-group">
+                    <label>PostelCode</label>
+                    <input type="text" required #postalCode="ngModel"
+                        [class.is-invalid]="postalCode.invalid && postalCode.touched" class="form-control"
+                        name="postal code" [(ngModel)]='userModel.postalCode'>
+                </div>
+            </div>
+            <div class='from-group'>
+                <label>Phone</label>
+                <input type='tel' required #phone="ngModel" pattern="^\d{10}$"
+                    [class.is-invalid]="phone.invalid && phone.touched" class="form-control" name='phone'
+                    [(ngModel)]='userModel.phone'>
+            </div>
+            <div class="text-center mt-5 ">
+                <button [disabled]="userForm.form.invalid" class="btn btn-success">Submit</button>
+            </div>
+        </form>
+    </div>

@@ -1,0 +1,60 @@
+<div class="row">
+    <div class="col mr-5 ml-5 mt-5 shadow p-4 mb-4 bg-light border border-light rounded-lg">
+        <h3 class="text-primary">Your items are ready to be shipped.</h3>
+        <div>
+            <h5>SHIPPING ADDRESS</h5>
+            <pre>
+                {{userDetails.name}}
+                {{userDetails.street}}
+                {{userDetails.city}}
+                {{userDetails.state}}- {{userDetails.postalCode}}
+                {{userDetails.phone}}
+            </pre>
+        </div>
+        <div class=" ml-5">
+            <h5>INVOICE</h5>
+            <table class=" w-50 table table-responsive-lg table-hover  ">
+                <tbody>
+                    <tr class="bg-light">
+                        <th>PRODUCT NAME</th>
+                        <th>DESCRIPTION</th>
+                        <th>QUANTITY</th>
+                        <th>PRICE</th>
+                    </tr>
+                </tbody>
+                <tbody>
+                    <tr *ngFor="let item of cartItems">
+                        <td>{{item.name}}</td>
+                        <td>{{item.description}}</td>
+                        <td>{{item.quantity}}</td>
+                        <td>{{item.price | currency:'INR'}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+
+
+    </div>
+</div>
+<!-- <div class="mt-5 ml-5">
+    
+    <span class="pull-right">
+        <h5>BILLING ADDRESS</h5>
+        <div>
+            <pre>
+                        {{userDetails.name}}
+                        {{userDetails.street}}
+                        {{userDetails.city}}
+                        {{userDetails.state}}
+                        {{userDetails.postalCode}}
+                        {{userDetails.phone}}</pre>
+        </div>
+    </span>
+</div>
+
+
+
+</div>
+</div> -->
