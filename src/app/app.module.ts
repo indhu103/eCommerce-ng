@@ -6,7 +6,7 @@ import { AppRoutingModule, routingComponents } from './app.routing.module';
 import { ProductService } from './product/product.service';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { ProductListComponent } from './product/product-list/product-list.component';
-
+import { NgxPaginationModule } from "ngx-pagination"
 
 @NgModule({
   declarations: [
@@ -19,7 +19,7 @@ import { ProductListComponent } from './product/product-list/product-list.compon
   imports: [
     BrowserModule,
     FormsModule,
-
+    NgxPaginationModule,
     Ng2SearchPipeModule,
     AppRoutingModule
   ],

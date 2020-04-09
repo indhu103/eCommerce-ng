@@ -11,6 +11,7 @@ import { CartService } from '../../cart/cart.service';
 export class ProductListComponent implements OnInit {
   products: Product[]
   cartItem = []
+  p
   cartCount: number = 0
   @Input() searchProduct
   @Output() cartCountEvent = new EventEmitter()
@@ -19,6 +20,7 @@ export class ProductListComponent implements OnInit {
   ngOnInit() {
     this.products = this.productService.getProducts()
   }
+
 
   addToCart(item) {
     this.cartService.addToCart(item);

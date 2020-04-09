@@ -18,6 +18,7 @@ export class CartService {
             items.price = item.price
             items.quantity = 1
             this.cartItems.push(items)
+
         }
         else {
             for (var i = 0; i < this.cartItems.length; i++) {

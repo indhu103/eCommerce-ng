@@ -1,3 +1,6 @@
+<div class="footer-copyright text-center py-3">
+    <pagination-controls (pageChange)="p=$event"></pagination-controls>
+</div>
 <table class="table table-responsive-lg table-hover  ">
     <tbody>
         <tr class="bg-light">
@@ -11,13 +14,14 @@
         </tr>
     </tbody>
     <tbody>
-        <tr *ngFor="let item of products | filter:searchProduct">
+        <tr *ngFor="let item of products | paginate:{itemsPerPage:10,currentPage:p} | filter:searchProduct">
             <td>{{item.id}}</td>
             <td>{{item.name}}</td>
             <td>{{item.description}}</td>
             <td>{{item.quantity}}</td>
             <td>{{item.price | currency:'INR'}}</td>
             <td>{{item.rating}}</td>
+
             <td>
                 <i *ngIf='item.quantity>0;else elseBlock' class="fa fa-cart-plus"
                     style="font-size:48px;color:rgb(0, 162, 255)" (click)=" addToCart(item)"></i>
@@ -30,3 +34,9 @@
         </tr>
     </tbody>
 </table>
+<!-- <footer class="footer">
+    <pagination-controls (pageChange)="p=$event"></pagination-controls>
+</footer> -->
+<div class="footer-copyright text-center py-3">
+    <pagination-controls (pageChange)="p=$event"></pagination-controls>
+</div>
