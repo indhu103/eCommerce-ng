@@ -1,6 +1,10 @@
 import { Product } from "./product.model";
-import { Observable, of } from 'rxjs';
+import { Observable, of, Subject } from 'rxjs';
 export class ProductService {
+    productsChanged = new Subject<Product[]>();
+
+
+
     private products: Product[] = [
         new Product(1, "Realme 6 Pro", "This is product 1", 10, 16999, 5),
         new Product(2, "Xiaomi Redmi Note 9 Pro", "This is product 2", 90, 12999, 5),
@@ -26,6 +30,10 @@ export class ProductService {
 
     getProducts() {
         return this.products.slice()
+    }
+    updateProduct(updatedProduct: Product[]) {
+        this.productsChanged.next([...updatedProduct])
+        console.log("updated pro", this.productsChanged, this.products)
 
     }
 

@@ -1,23 +1,23 @@
-<div class="row d-flex justify-content-center mt-5">
-    <div class="col-md-5 ml-5">
-        <div class="input-group">
-            <input class="form-control  mr-sm-2 " type="search" placeholder="Start typing product name"
-                [(ngModel)]="searchProduct">
-            <span class=" input-group-btn">
-                <button class="btn btn-primary " type="submit">Search</button>
-            </span>
-        </div>
-    </div>
+<div class=" flex justify-center sm:justify-center md:justify-center lg:justify-center xl:justify-center mt-8">
+    <input class="border py-2 px-3  sm:w-auto md:w-1/2 lg:w-1/2 xl:w-1/2 text-grey-darkest" type="search"
+        placeholder="Search..." [(ngModel)]="searchProduct">
+    <span class="pl-1">
+        <button class="bg-purple hover:bg-purple-dark text-white font-bold py-2 px-3 rounded"
+            type="submit">Search</button>
+    </span>
 </div>
-<div class="row">
-    <div class="col mr-5 ml-5 mt-5 shadow p-4 mb-4 bg-light border border-light rounded-lg">
-        <nav class="navbar bg-white ">
-            <a class="navbar-brand text-dark font-weight-bold">Product List</a>
-            <div class="ml-auto font-weight-bold">
-                <a routerLink='/cart' routerLinkActive="active">Your
-                    cart:<span>{{cartCount}}</span></a>
+
+<div
+    class="rounded  m-12 shadow sm:rounded-md shadow-md md:shadow-lg lg:rounded-lg shadow-inner xl: rounded-xl shadow-lg bg-grey-light">
+    <div class="px-4 py-4">
+        <nav class="flex  flex-wrap bg-white p-3">
+            <span class="font-semibold text-xl tracking-tight">Product List</span>
+            <div class="ml-auto font-bold">
+                <a routerLink='/cart' routerLinkActive="active" data-toggle="tooltip"
+                    title="Click to see cart items!">Your
+                    cart:<span class="text-red">{{cartCount}}</span></a>
             </div>
         </nav>
-        <app-product-list [searchProduct]=" searchProduct" (cartCountEvent)="cartCount=$event"></app-product-list>
     </div>
+    <app-product-list [searchProduct]=" searchProduct" (cartCountEvent)="cartCount=$event"></app-product-list>
 </div>

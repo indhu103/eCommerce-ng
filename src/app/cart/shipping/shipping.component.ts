@@ -9,6 +9,7 @@ import { CartService } from '../cart.service';
 export class ShippingComponent implements OnInit {
   userDetails: any
   cartItems: any
+  public quantity: number
   public totalPrice
   constructor(private cartService: CartService) { }
 

@@ -1,39 +1,127 @@
-<div class="footer-copyright text-center py-3">
-    <pagination-controls (pageChange)="p=$event"></pagination-controls>
-</div>
-<table class="table table-responsive-lg table-hover  ">
-    <tbody>
-        <tr class="bg-light">
-            <th>PRODUCT ID</th>
-            <th>PRODUCT NAME</th>
-            <th>DESCRIPTION</th>
-            <th>QUANTITY</th>
-            <th>PRICE</th>
-            <th>RATING</th>
-            <th></th>
-        </tr>
-    </tbody>
-    <tbody>
-        <tr *ngFor="let item of products | paginate:{itemsPerPage:10,currentPage:p} | filter:searchProduct">
-            <td>{{item.id}}</td>
-            <td>{{item.name}}</td>
-            <td>{{item.description}}</td>
-            <td>{{item.quantity}}</td>
-            <td>{{item.price | currency:'INR'}}</td>
-            <td>{{item.rating}}</td>
-
-            <td>
-                <i *ngIf='item.quantity>0;else elseBlock' class="fa fa-cart-plus"
-                    style="font-size:48px;color:rgb(0, 162, 255)" (click)=" addToCart(item)"></i>
-            </td>
-            <ng-template #elseBlock>
-                <td>
-                    <i class="fa fa-cart-plus" style="font-size:48px;color:red"></i>
+<!-- <div class="text-center py-3">
+    <pagination-controls (pageChange)="p=$event" responsive="true"></pagination-controls>
+</div> -->
+<div class="px-4 py-4">
+    <table class="border-collapse w-full">
+        <thead>
+            <tr class="bg-white">
+                <th
+                    class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
+                    PRODUCT ID</th>
+                <th
+                    class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
+                    PRODUCT NAME</th>
+                <th
+                    class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
+                    DESCRIPTION</th>
+                <th
+                    class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
+                    QUANTITY</th>
+                <th
+                    class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
+                    PRICE</th>
+                <th
+                    class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
+                    RATING</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of products | paginate:{itemsPerPage:10,currentPage:p} | filter:searchProduct"
+                class="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
+                <td
+                    class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+                    <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">
+                    </span>
+                    {{item.id}}
                 </td>
-            </ng-template>
-        </tr>
-    </tbody>
-</table>
+                <td
+                    class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+                    <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">
+                    </span>
+                    {{item.name}}
+                </td>
+
+                <td
+                    class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+                    <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">
+                    </span>
+                    {{item.description}}
+                </td>
+                <td
+                    class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+                    <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">
+                    </span>
+                    {{item.quantity}}
+                </td>
+                <td
+                    class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+                    <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">
+                    </span>
+                    {{item.price}}
+                </td>
+                <td
+                    class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+                    <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">
+                    </span>
+                    {{item.rating}}
+                </td>
+                <td *ngIf="item.quantity>0; else elseBlock"
+                    class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+                    <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">
+                    </span>
+                    <button id={{item.id}} class="bg-green-dark text-white font-bold py-2 px-4 rounded-full"
+                        (click)="addToCart(item)">Add To
+                        Cart</button>
+                </td>
+                <ng-template #elseBlock>
+                    <td
+                        class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+                        <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">
+                        </span> <button
+                            class="bg-red-light text-white font-bold py-2 px-4 rounded-full cursor-not-allowed">Out Of
+                            Stock</button>
+                    </td>
+                </ng-template>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+    <!-- <table class="table table-responsive-lg table-hover  ">
+        <tbody>
+            <tr class="bg-light">
+                <th>PRODUCT ID</th>
+                <th>PRODUCT NAME</th>
+                <th>DESCRIPTION</th>
+                <th>QUANTITY</th>
+                <th>PRICE</th>
+                <th>RATING</th>
+                <th></th>
+            </tr>
+        </tbody>
+        <tbody>
+            <tr *ngFor="let item of products | paginate:{itemsPerPage:10,currentPage:p} | filter:searchProduct">
+                <td>{{item.id}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.description}}</td>
+                <td>{{item.quantity}}</td>
+                <td>{{item.price | currency:'INR'}}</td>
+                <td>{{item.rating}}</td>
+                <td *ngIf="item.quantity>0; else elseBlock">
+                    <button id={{item.id}} class="btn btn-success" (click)="addToCart(item)">Add To
+                        Cart</button>
+                </td>
+                <ng-template #elseBlock>
+                    <td>
+                        <button class="btn btn-danger" disabled>Out Of Stock</button>
+                    </td>
+                </ng-template>
+            </tr>
+        </tbody>
+    </table> -->
+</div>
 <!-- <footer class="footer">
     <pagination-controls (pageChange)="p=$event"></pagination-controls>
 </footer> -->
