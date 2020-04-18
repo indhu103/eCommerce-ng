@@ -1,0 +1,10 @@
+[
+    {
+        "id": 1,
+        "name": "Realme 6 Pro",
+        "desc": "This is product 1",
+        "quantity": 10,
+        "price": 16999,
+        "rating": 5
+    }
+]
